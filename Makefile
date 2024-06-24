@@ -121,8 +121,9 @@ else ifeq ($(platform),wiiu)
   OUTNAME := dosbox_pure_libretro_wiiu.a
   CXX     := $(DEVKITPPC)/bin/powerpc-eabi-g++
   AR      := $(DEVKITPPC)/bin/powerpc-eabi-ar
-  COMMONFLAGS += -DGEKKO -DWIIU -DHW_RVL -mcpu=750 -meabi -mhard-float
-  COMMONFLAGS += -ffunction-sections -fdata-sections -D__wiiu__ -D__wut__ -D__POWERPC__ -D__ppc__ -DMSB_FIRST -DWORDS_BIGENDIAN=1 -DGX_PTHREAD_LEGACY
+  COMMONFLAGS += -I$(DEVKITPRO)/wut/include
+  COMMONFLAGS += -DGEKKO -DWIIU -DHW_RVL -mcpu=750 -meabi -mhard-float -D_SYS__PTHREADTYPES_H_ -D_SIGNAL_H_
+  COMMONFLAGS += -ffunction-sections -fdata-sections -D__wiiu__ -D__wut__ -D__POWERPC__ -D__ppc__ -DMSB_FIRST -DWORDS_BIGENDIAN=1
   STATIC_LINKING = 1
 else ifeq ($(platform),libnx)
   OUTNAME := dosbox_pure_libretro_libnx.a
